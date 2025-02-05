@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolled Letter with Ribbon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: relative;
+            width: 60%;
+            height: 60%;
+            text-align: center;
+        }
+
+        .ribbon {
+            position: absolute;
+            top: 15%;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background-color: pink;
+            transform: translateY(-50%);
+            width: 60%;
+            margin: 0 auto;
+            transition: all 1s ease-in-out;
+        }
+
+        .rolledLetter {
+            position: relative;
+            background-color: white;
+            height: 200px;
+            width: 50%;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 5px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-origin: top center;
+            transform: rotate(90deg);
+            transition: all 1s ease-in-out;
+        }
+
+        .letterContent {
+            font-family: 'Courier New', monospace;
+            font-size: 20px;
+            color: red; /* Changed text color to red */
+            white-space: pre-wrap;
+            padding: 20px;
+            display: block;
+            text-align: left;
+            visibility: hidden; /* Initially hide the text */
+        }
+
+        .openLetter {
+            transform: rotate(0deg);
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .showText {
+            visibility: visible; /* Show the text when the letter opens */
+        }
+
+        .ribbonFallen {
+            transform: translateY(200px);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container" onclick="openLetter()">
+        <div class="ribbon" id="ribbon"></div>
+        <div class="rolledLetter" id="rolledLetter">
+            <div class="letterContent" id="letterText">
+                love, 
+                you were so unexpected, the collision of every force hit me so hard i haven't recovered since and theres not a single day when i have wanted to.
+                i wanna do everything with you.
+                travel the world, swim in stormy seas, climb the most difficult terrain just so i could have you before the view. 
+                to me you exist in a way no one else could ever live.
+                everything is better with you. everything has been better with you. 
+                i would choose you in every lifetime.
+                thank you for being mine.
+                i love you so much.
+                happy valentines day sugar.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let clicked = 0;
+
+        function openLetter() {
+            const ribbon = document.getElementById("ribbon");
+            const rolledLetter = document.getElementById("rolledLetter");
+            const letterText = document.getElementById("letterText");
+
+            clicked++;
+
+            if (clicked === 1) {
+                ribbon.classList.add("ribbonFallen");
+            } else if (clicked === 2) {
+                rolledLetter.classList.add("openLetter");
+                letterText.classList.add("showText"); // Show text when letter unfolds
+            }
+        }
+    </script>
+</body>
+</html>
